@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas" width="50" height="50"></canvas>
+<script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+//    var imageObj = new Image();
+//
+//    imageObj.onload = function() {
+//        context.drawImage(imageObj, 10, 20);
+//    };
+//    imageObj.src = 'mouse.png';
+
+    var canvas = document.querySelector('canvas'),
+            ctx = canvas.getContext('2d'),
+            img = new Image(),
+    // a ghost canvas that will keep our original image
+            gCanvas = document.createElement('canvas'),
+            gCtx = gCanvas.getContext('2d');
+    gCanvas.width = canvas.width;
+    gCanvas.height = canvas.height;
+
+
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        gCtx.drawImage(canvas, 0, 0, canvas.width, canvas.height);
+        requestAnimationFrame(moveUp);
+    }
+    img.src = "mouse.png";
+
+    var y = 0;
+    function moveUp() {
+        if (++y > (canvas.height * 0.5)) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(gCanvas, 0, y, canvas.width, canvas.height);
+        requestAnimationFrame(moveUp)
+    }
+</script>
+<!--<canvas id="canvas" width="578" height="400">This is not supported for your browser</canvas>-->
+<!--<script>-->
+    <!--var canvas = document.getElementById('canvas');-->
+    <!--var ctx = canvas.getContext('2d');-->
+
+<!--//    ctx.fillStyle = 'yellow';-->
+<!--//-->
+<!--//   ctx.beginPath();-->
+<!--//-->
+<!--//-->
+<!--//    var cx = canvas.width/2,-->
+<!--//            cy = canvas.height/2,-->
+<!--//            r = 150;-->
+<!--//-->
+<!--//    ctx.arc(cx,cy,r,0, 360*Math.PI/180);-->
+<!--//    ctx.moveTo(50,50);-->
+<!--//    ctx.strokeStyle = 'red';-->
+<!--//    ctx.lineWidth = '12';-->
+<!--//    ctx.lineCap = 'round';-->
+<!--//    ctx.stroke();-->
+
+    <!--var imageObj = new Image();-->
+    <!--imageObj.onload = function () {-->
+        <!--context.drawImage(imageObj, 59, 40);-->
+    <!--};-->
+    <!--imageObj.src = 'mouse.png';-->
+<!--</script>-->
+</body>
+</html>
