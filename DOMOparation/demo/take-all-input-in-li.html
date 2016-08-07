@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+    <li>
+        <input type="text">
+    </li>
+    <li>
+        <input type="text">
+    </li>
+    <li>
+        <input type="text">
+    </li>
+    <li>
+        <input type="text">
+    </li>
+</ul>
+<input>
+<script>
+var liItem = document.getElementsByTagName('li'),
+        inputs = [];
+for (var i = 0, len = liItem.length; i < len; i+=1) {
+    var listItem = liItem[i];
+    inputs.push(listItem.getElementsByTagName('input')[0]);
+    console.log(inputs.length);
+
+}
+</script>
+</body>
+</html>

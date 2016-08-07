@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>This is the demos for dom presentation</h1>
+<input name="choices[]" checked="checked" type="checkbox" value="0">
+<input name="choices[]" type="checkbox" value="1">
+<input name="choices[]" type="checkbox" value="2">
+<input name="choices[]" type="checkbox" value="3">
+<input name="choices[]" type="checkbox" value="4">
+<button onclick="onButtonClick()">Show chosen</button>
+<div id="output"></div>
+<script>
+    var outputDiv = document.getElementById('output');
+    function onButtonClick() {
+        var radios = document.getElementsByName('choices[]');
+        for (var i = 0, len = radios.length; i < len; i += 1) {
+            var radio = radios[i];
+            if (radio.checked) {
+                outputDiv.innerHTML += '<p>' + radio.value + '</p>';
+
+            }
+
+        }
+    }
+</script>
+</body>
+
+</html>

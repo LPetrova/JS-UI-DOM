@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        strong {
+            text-decoration: underline;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="wrapper">
+    <ul id="list"><li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <ul id="left">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+    <ul id="rigth"></ul>
+</div>
+<script>
+    function traversingSibling() {
+        var list = document.querySelector('#list');
+        var child = list.lastChild;
+        console.log(child);
+
+        while (child) {
+            console.log(child);
+            child = child.previousSibling;
+        }
+//    var child = list.firstChild;
+//    console.log(child);
+//    //za da obhodim vsi4ki li-ta
+//    while (child){ //dokato child go ima
+//        console.log(child);
+//        child = child.nextSibling;
+//    }
+    }
+    
+    function creatingElement() {
+        var list = document.getElementById('list');
+       var count = 15;
+        for (var i = 0; i < count; i+=1) {
+            var title = document.createElement('strong');
+            title.innerHTML = 'Item' + (i+1);
+            var item = document.createElement('li');
+            item.id = 'list-item-' + i;
+            item.appendChild(title);
+            list.appendChild(item);
+        }
+    }
+
+    function  removingElements() {
+        var list = document.getElementById('list');
+        creatingElement();
+    }
+    
+    function alteringElement() {
+        var leftList = document.getElementById('left'),
+                rigthList = document.getElementById('rigth');
+        leftList.addEventListener('click', function (ev){
+         var target = ev.target; // -> el-ta vyrhu koito sme kliknali
+            if(!(target instanceof HTMLLIElement)){
+               return;
+            }
+            rigthList.appendChild(target);
+        })
+
+        rigthList.addEventListener('click', function (ev){
+            var target = ev.target; // -> el-ta vyrhu koito sme kliknali
+            if(!(target instanceof HTMLLIElement)){
+                return;
+            }
+            leftList.appendChild(target);
+        })
+    }
+
+
+   // alteringElement();
+    //removingElements();
+// traversingSibling();
+   // creatingElement();
+</script>
+</body>
+</html>

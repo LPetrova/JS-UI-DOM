@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <ul id="list"></ul>
+</head>
+<body>
+<script>
+    function usingDocFragment() {
+        var list = document.getElementById('list'),
+                counter = 15,
+                listFracment = document.createDocumentFragment();
+        for (var i = 0; i < counter; i++) {
+            var item = document.createElement('li');
+            item.innerHTML = 'Item#' + (i + 1);
+            listFracment.appendChild(item);
+
+            //1.list.appendChild(item); dobavq mi gi edin po edin
+       //2. list.innerHTML += '<li>' + 'Item#' + (i + 1) +'</li>'; -> rabotim sys string
+        }
+
+        list.appendChild(listFracment);
+
+    }
+
+    function fasterElementsCreation() {
+        var list = document.getElementById('list'),
+                count = 5000,
+                listFragment = document.createDocumentFragment('div');
+
+        var itemTemplate = document.createElement('li'),
+                titleTemplate = document.createElement('strong');
+
+        itemTemplate.className = 'list-item';
+
+        titleTemplate.class = 'item-title';
+        itemTemplate.appendChild(titleTemplate);
+
+        for (var i = 0; i < count; i += 1) {
+            titleTemplate.innerHTML = 'Item #' + (i + 1);
+            itemTemplate.setAttribute('data-id', i);
+            listFragment.appendChild(itemTemplate.cloneNode(true));
+        }
+
+        //delete all list children
+        list.appendChild(listFragment);
+    }
+
+</script>
+
+</body>
+</html>

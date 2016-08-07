@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="list">
+    <ul id="wrapper">
+
+    </ul>
+
+</div>
+<script>
+    var wrapper = document.getElementById('wrapper'),
+           frag = document.createDocumentFragment(),
+            count = 100;
+    for (var i = 0; i < count; i+=1) {
+        var li = document.createElement('li');
+        li.id = 'item ' + (i + 1);
+        li.innerHTML = 'item ' + (i + 1);
+        frag.appendChild(li);
+    }
+    wrapper.appendChild(frag);
+
+    //    var list = document.getElementById('list'),
+    //            i,
+    //            len = 5;
+    //    var createUl = document.createElement('ul');
+    //    list.appendChild(createUl);
+    //    createUl.className = 'ul-class';
+    //    for (i = 0; i < 5; i+=1) {
+    //        var itemLi = document.createElement('li');
+    //        createUl.appendChild(itemLi);
+    //        itemLi.innerHTML += '#item ' + (i + 1);
+    //    }
+    //    var newLi = document.createElement('li');
+    //    newLi.innerHTML = 'I am here';
+    //    createUl.insertBefore(newLi,createUl.firstElementChild);
+    //    //createUl.parentNode.removeChild(createUl);
+    //    newLi.parentNode.removeChild(newLi);
+
+</script>
+</body>
+</html>

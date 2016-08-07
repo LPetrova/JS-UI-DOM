@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .dropdown-list li{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="dropdown">
+    </div>
+</div>
+
+<script>
+    function creatingDropdownList() {
+        function createDropDown(selector, items) {
+            var container = document.querySelector(selector);
+            container.className = ' dropdown-list';//slaga se space, za6toto ako imame dr class 6te se slepqt
+            //create strong
+            var selectedItem = document.createElement('strong');
+            selectedItem.innerHTML = 'not selected';
+
+            //create li
+            var itemsList = document.createElement('ul');
+            itemsList.style.display = 'none';
+            for (var i = 0; i < items.length; i+=1) {
+                var item = document.createElement('li');
+                item.innerHTML = items[i];
+                itemsList.appendChild(item);
+
+            }
+            container.appendChild(selectedItem);
+            container.appendChild(itemsList);
+
+            selectedItem.addEventListener('click',function () {
+                if (itemsList.style.display === 'none'){
+                    itemsList.style.display = '';
+                } else {
+                    itemsList.style.display = 'none';
+                }
+            });
+        }
+        var items = ['Apples', 'Oranges', 'Bananas', 'Peaches', 'Plums'];
+        createDropDown('#dropdown', items);
+    }
+    creatingDropdownList();
+</script>
+</body>
+</html>
